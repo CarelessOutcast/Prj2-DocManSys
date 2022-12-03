@@ -1,21 +1,23 @@
 package com.Careless.app;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+import java.io.File;
 
 import static com.Careless.app.Attributes.*;
 
-public class ImporterReport implements ImporterI{
-    private final static String NAME_PREFIX = "Patient: "; 
-
+public class ImporterInvoice implements ImporterI {
+    private static final String NAME_PREFIX = "Dear ";
+    private static final String AMOUNT_PREFIX = "Amount: ";
+    
+    @Override
     public Document importItem(File file) throws IOException{
         final TextFile textFile = new TextFile(file);
         textFile.addLineSuffix(NAME_PREFIX, PATIENT);
-        textFile.addLines(2, line->false, BODY);
+        textFile.addLineSuffix(AMOUNT_PREFIX, AMOUNT);
 
         final Map<String,String> attributes = textFile.getAttributes();
-        attributes.put(TYPE, "REPORT");
+        attributes.put(TYPE, "INVOICE");
 
         return new Document(attributes);
     }
