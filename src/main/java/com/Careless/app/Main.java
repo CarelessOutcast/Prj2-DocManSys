@@ -15,10 +15,12 @@ public class Main {
     private static final Map<String,ImporterI> extensionToImporter = new HashMap<>();
 
     public static void main(String[] args){
+
             extensionToImporter.put("letter",new ImporterLetter());
             extensionToImporter.put("report",new ImporterReport());
             extensionToImporter.put("image",new ImporterImage());
             extensionToImporter.put("invoice",new ImporterInvoice());
+
         }
     public void importFile(final String path)throws IOException{
         final File file = new File(path);

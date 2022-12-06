@@ -1,14 +1,14 @@
 package com.Careless.app;
 
 public class Attributes{
-    public static final String PATH  = "PATH ";
-    public static final String PATIENT = "PATIENT";
-    public static final String ADDRESS = "ADDRESS";
-    public static final String BODY  = "BODY ";
-    public static final String WIDTH = "WIDTH";
-    public static final String HEIGHT = "HEIGHT";
-    public static final String TYPE = "TYPE";
-    public static final String AMOUNT  = "AMOUNT ";
+    public static final String PATH  = "path";
+    public static final String PATIENT = "patient";
+    public static final String ADDRESS = "address";
+    public static final String BODY  = "body";
+    public static final String WIDTH = "width";
+    public static final String HEIGHT = "height";
+    public static final String TYPE = "type";
+    public static final String AMOUNT  = "amount";
 }
 
 
