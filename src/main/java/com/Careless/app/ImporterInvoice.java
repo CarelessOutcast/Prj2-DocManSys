@@ -7,11 +7,13 @@ import java.io.File;
 import static com.Careless.app.Attributes.*;
 
 public class ImporterInvoice implements ImporterI {
+
     private static final String NAME_PREFIX = "Dear ";
     private static final String AMOUNT_PREFIX = "Amount: ";
     
     @Override
     public Document importItem(File file) throws IOException{
+
         final TextFile textFile = new TextFile(file);
         textFile.addLineSuffix(NAME_PREFIX, PATIENT);
         textFile.addLineSuffix(AMOUNT_PREFIX, AMOUNT);

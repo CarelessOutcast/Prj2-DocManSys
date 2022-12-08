@@ -10,6 +10,7 @@ public class ImporterLetter implements ImporterI{
     private static final String NAME_PREFIX = "Dear ";
 
     public Document importItem(File file) throws IOException {
+
         final TextFile textFile = new TextFile(file);
         textFile.addLineSuffix(NAME_PREFIX, PATIENT);
 
@@ -18,7 +19,7 @@ public class ImporterLetter implements ImporterI{
 
         final Map<String,String> attributes = textFile.getAttributes();
         attributes.put(TYPE,"LETTER");
-        return new Document(attributes);
 
+        return new Document(attributes);
     }
 }

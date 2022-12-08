@@ -1,4 +1,5 @@
 package com.Careless.app;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -14,19 +15,29 @@ class TextFile{
     private final Map<String,String> attributes;
     private final List<String> lines;
 
-    Map<String,String> getAttributes(){
-        return attributes;
-    }
-
+    //Construct w/ File location & Contents
     TextFile(final File file) throws IOException{
         attributes = new HashMap<>();
         attributes.put(PATH, file.getPath());
         lines = Files.lines(file.toPath()).collect(toList());
     }
-    int addLines(final int start, final Predicate<String> isEnd,final String attributeName){
+
+    Map<String,String> getAttributes(){
+        return attributes;
+    }
+
+    // Get content from file 
+    int addLines(
+        final int start,
+        final Predicate<String> isEnd,
+        final String attributeName)
+    {
         final StringBuilder accumulator = new StringBuilder();
+
         int lineNum;
-        for(lineNum=start; lineNum < lines.size();lineNum++){
+
+        for(lineNum=start; lineNum < lines.size(); lineNum++){
+
             final String line = lines.get(lineNum);
             if(isEnd.test(line)){
                 break;
@@ -34,13 +45,16 @@ class TextFile{
             accumulator.append(line);
             accumulator.append("\n");
         }
+
         attributes.put(attributeName,accumulator.toString().trim());
         return lineNum; 
     }
+
+    // Gather patient name 
     void addLineSuffix(final String prefix, final String attributeName){
         for(final String line: lines){
             if(line.startsWith(prefix)){
-                attributes.put(attributeName, line.substring(prefix.length()));
+                 attributes.put(attributeName, line.substring(prefix.length()));
                 break;
             }
         }
